@@ -26,11 +26,15 @@ public class TaskModelManager implements TaskModel
     String timeCreated = simpleDateFormatDate.format(now);
     Task task = new Task(owner, description, timeCreated);
     tasks.add(task);
+    support.firePropertyChange("AddTask", -1, 0);
   }
 
   @Override public Task getNextTask()
   {
-    return null;
+    Task task = tasks.get(0);
+    tasks.remove(0);
+    support.firePropertyChange("NextTask", -1, 0);
+    return task;
   }
 
   @Override public void addPropertyChangeListener(

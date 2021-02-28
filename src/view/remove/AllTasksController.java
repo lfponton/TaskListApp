@@ -4,6 +4,7 @@ import core.ViewHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Task;
 
 import java.awt.event.ActionEvent;
@@ -22,13 +23,18 @@ public class AllTasksController
   {
     this.allTasksViewModel = allTasksViewModel;
     this.viewHandler = viewHandler;
+
+    creatorColumn.setCellValueFactory(new PropertyValueFactory<>("owner"));
+    descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+    dateColumn.setCellValueFactory(new PropertyValueFactory<>("timeCreated"));
+    tableView.setItems(allTasksViewModel.getTasks());
   }
 
-  public void onAddButton(ActionEvent evt) {
+  public void onAddButton() {
 
   }
 
-  public void onNextTaskButton(ActionEvent evt) {
+  public void onNextTaskButton() {
 
   }
 }

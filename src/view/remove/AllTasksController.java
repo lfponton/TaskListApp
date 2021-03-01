@@ -30,11 +30,13 @@ public class AllTasksController
     tableView.setItems(allTasksViewModel.getTasks());
   }
 
-  public void onAddButton() {
-
+  public void onAddButton(ActionEvent actionEvent) {
+    viewHandler.openAddTaskView();
   }
 
-  public void onNextTaskButton() {
-
+  public void onNextTaskButton(ActionEvent actionEvent) {
+    viewHandler.openNextTaskView();
   }
+
+  
 }

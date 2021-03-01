@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Task;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 
 public class AllTasksController
 {

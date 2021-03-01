@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.add.AddTasksController;
 import view.remove.AllTasksController;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class ViewHandler
   private Stage stage;
   private Scene allTasksViewScene;
   private Scene removeTaskViewScene;
-  private Scene getAllTasksViewScene;
+  private Scene addTasksViewScene;
 
   private ViewModelFactory viewModelFactory;
 
@@ -46,7 +47,16 @@ public class ViewHandler
 
   public void openAddTaskView()
   {
-
+    FXMLLoader loader = new FXMLLoader();
+    if (addTasksViewScene == null)
+    {
+      Parent root = getRootByPath("../view/add/AddTasksView.fxml", loader);
+      AddTasksController controller = loader.getController();
+      controller.init(viewModelFactory.getAddTasksViewModel(), this);
+      addTasksViewScene = new Scene(root);
+    }
+    stage.setTitle("Add Task");
+    stage.setScene(addTasksViewScene);
   }
 
   public void openNextTaskView()
